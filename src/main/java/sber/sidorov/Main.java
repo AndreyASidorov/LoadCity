@@ -1,7 +1,6 @@
 package sber.sidorov;
 
 import sber.sidorov.Model.City;
-import sber.sidorov.dao.CityDao;
 import sber.sidorov.service.impl.*;
 import sber.sidorov.utils.ListPrinter;
 

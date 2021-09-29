@@ -14,6 +14,9 @@ public class PropertyManager {
     public static String password;
     public static String dbDriver;
 
+    /**
+     * Инициализация свойств
+     */
     static {
         try {
             Properties property = new Properties();

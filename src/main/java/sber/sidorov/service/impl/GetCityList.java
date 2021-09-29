@@ -16,6 +16,10 @@ public class GetCityList implements CityListManipulator {
 
     private GetCityList() {}
 
+    /**
+     *
+     * @return список всех городов из базы
+     */
     public List<City> getCityList() {
         return cities;
     }

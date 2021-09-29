@@ -19,6 +19,10 @@ public class MaxPopulationFinder implements CityListManipulator {
     private MaxPopulationFinder() {
     }
 
+    /**
+     * поиск города с максимальным населением
+     * @return город с максимальным населением в формате: [индекс] - население
+     */
     public City getMaxPopulation() {
         return cities
                 .stream()
