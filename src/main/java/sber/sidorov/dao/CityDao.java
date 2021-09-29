@@ -11,13 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static sber.sidorov.config.PropertyManager.*;
-import static sber.sidorov.config.PropertyManager.password;
 import static sber.sidorov.dao.DBController.*;
 
 public class CityDao {
     public static ResultSet rs;
 
+    /**
+     * Создание базы данных
+     * @return результат создания
+     */
     public static int dbCreate() {
         try {
             Statement statement = connect.createStatement();
@@ -36,6 +38,13 @@ public class CityDao {
             return 0;
         }
     }
+
+    /**
+     * Инициализация базы данных
+     * @param fileName путь к списку городов
+     * @throws IOException
+     * @throws SQLException
+     */
     public static void dbInit(String fileName) throws IOException, SQLException {
         PreparedStatement statement = connect.prepareStatement("INSERT INTO CITIES (ID, NAME, REGION, DISTRICT, POPULATION, FOUNDATION) VALUES (?, ?, ?, ?, ?, ?);");
         Path path = Paths.get(fileName);
@@ -56,6 +65,12 @@ public class CityDao {
         scanner.close();
     }
 
+    /**
+     * Проверка на дубль в базе
+     * @param city город для проверки
+     * @return результат проверки на дубль
+     * @throws SQLException
+     */
     public static boolean checkIfExists (City city) throws SQLException {
         PreparedStatement statement = connect.prepareStatement("SELECT * FROM CITIES WHERE ID = ?");
         statement.setInt(1, city.getId());
@@ -64,6 +79,10 @@ public class CityDao {
         return rs.next();
     }
 
+    /**
+     * Получение городов из базы
+     * @return список всех городов
+     */
     public static List<City> getCitiesList() {
         try {
             List<City> cities = new ArrayList<>();

@@ -1,15 +1,6 @@
 package sber.sidorov.dao;
 
-import sber.sidorov.Model.City;
-import sber.sidorov.utils.ParseString;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 import static sber.sidorov.config.PropertyManager.*;
 
@@ -17,6 +8,10 @@ public class DBController {
 
     public static Connection connect;
 
+    /**
+     * подключение к БД
+     * @return результат подключения
+     */
     public static int createConnection() {
         try {
             Class.forName(dbDriver);
@@ -29,6 +24,10 @@ public class DBController {
         }
     }
 
+    /**
+     * закрывает подключение к базе
+     * @return результат подключения
+     */
     public static int closeConnection() {
         try {
             connect.close();
